@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido Especial</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: blur(5px); /* Desenfoque reducido */
+            opacity: 0.7;
+        }
+
+        .section {
+            padding: 50px 20px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 15px;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .container {
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 2em;
+            color: #f06b8a;
+            margin-bottom: 20px;
+        }
+
+        .letter {
+            font-size: 1.2em;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.5em;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .letter span {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .hearts {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #f06b8a;
+            text-align: center;
+        }
+
+        .moments {
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .moments img {
+            width: 100%;
+            height: auto;
+        }
+
+        .moments video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop class="video-background">
+        <source src="fondo-borroso.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+
+    <div class="section">
+        <div class="header">ESPERO QUE TE GUSTE❤️</div>
+        <div class="subheader">30 / 04</div>
+
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <img src="foto1.jpg" alt="Foto 1">
+                <img src="foto4.jpg" alt="Foto 4">
+                <img src="foto5.jpg" alt="Foto 5">
+            </div>
+            <div class="carousel-buttons">
+                <button id="prevBtn">⟨</button>
+                <button id="nextBtn">⟩</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 3: Mi Carta para Ti -->
+    <div class="section">
+        <div class="container">
+            <div class="title">Mi Carta para Ti</div>
+            <div class="letter">
+                <p>Eres mi persona favorita, y disfruto cada momento que pasamos juntos. Gracias por estar siempre ahí y por ser alguien en quien siempre puedo confiar. Estar contigo hace que todo valga la pena, estoy orgulloso de ti. Eres el amor de mi vida😍. TE AMOOOOOO💞"</p>
+                <!-- Resto de la carta -->
+                <div class="hearts">❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección 4: Mejores Momentos -->
+    <div class="section">
+        <div class="title">quise poner unas fotos</div>
+        <div class="moments">
+            <img src="momento1.jpg" alt="Momento 1">
+            <img src="momento2.jpg" alt="Momento 2">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                <div class="title">Eres mi todo</div>
+            </video>
+            <img src="momento3.jpg" alt="Momento 3">
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de videos.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let index = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel img');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides) {
+                index = 0;
+            } else if (index < 0) {
+                index = totalSlides - 1;
+            }
+
+            const offset = -index * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            index++;
+            showSlide(index);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            index--;
+            showSlide(index);
+        });
+
+        // Auto-play cada 3 segundos
+        setInterval(() => {
+            index++;
+            showSlide(index);
+        }, 3000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Estilo para el video de fondo */
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        .login-container {
+            position: relative;
+            width: 300px;
+            padding: 40px 20px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Formulario */
+        .login-container h2 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #000;
+        }
+
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .login-container button {
+            background-color: #f18daf;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        .login-container button:hover {
+            background-color: #f06b8a;
+        }
+
+        /* Paws at the bottom */
+        .paws {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 70px;
+        }
+
+        .paw {
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .paw::before, .paw::after {
+            content: '';
+            position: absolute;
+            background-color: #000;
+            border-radius: 50%;
+        }
+
+        .paw::before {
+            width: 8px;
+            height: 8px;
+            top: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .paw::after {
+            width: 6px;
+            height: 6px;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Video de fondo -->
+    <video autoplay muted loop id="video-background">
+        <source src="your-video.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+
+    <div class="login-container">
+        <h2>Contraseña:</h2>
+        <input type="password" id="password" placeholder="Adivina la contraseña...">
+        <button onclick="checkPassword()">LOGIN</button>
+        <div class="paws">
+            <div class="paw"></div>
+            <div class="paw"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === '3004') {
+                window.location.href = 'content.html';  // Redirige a content.html si la contraseña es correcta
+            } else {
+                alert('Contraseña incorrecta. Intenta de nuevo.');
+            }
+        }
+    </script>
+
+</body>
+</html>
